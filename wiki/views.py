@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.http import HttpResponseRedirect
+
 
 from wiki.models import Page
+from wiki.forms import PageForm
 
 
 class PageListView(ListView):
@@ -26,3 +29,21 @@ class PageDetailView(DetailView):
         return render(request, 'page.html', {
           'page': page
         })
+
+
+def get_page(request):
+    if request.method == 'POST':
+        f = PageForm(request.POST)
+
+        print("Form: {}".format(f))
+
+        if form.is_valid():
+            print("form is valid")
+            return HttpResponseRedirect("/")
+        else:
+            print("form is invalid")
+
+    else:
+        form = PageForm()
+
+    return render(request, 'newpage.html', {'form': form})

@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'wiki'
+    'wiki',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'makewiki.urls'
 
+DEFAULT_LOGOUT_URL = '/'
 
 TEMPLATES = [
     {
