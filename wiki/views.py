@@ -38,7 +38,12 @@ class PageDetailView(DetailView):
         })
 
 
-class PageCreateView(CreateView):
+class PageCreateView_(CreateView):
+    model = Page
+    fields = ['title', 'content', 'author']
+    template_name = 'newpage.html'
+
+class PageCreateView__(CreateView):
     template_name = 'newpage.html'
     form_class = PageForm
 
@@ -64,7 +69,7 @@ class PageCreateView(CreateView):
 
 
 
-class PageCreateView_(CreateView):
+class PageCreateView(CreateView):
     """Process create new_page logic."""
 
     def get(self, request, *args, **kwargs):
